@@ -70,22 +70,26 @@ func ListenQPassBE(c *gin.Context) {
 		return
 	}
 	str := buf.String()
-	fmt.Println(str)
-	cmd := exec.Command("chmod", "+x", "./script/qpass_qpass-be/restart.sh")
-	stdout, err := cmd.Output()
-	if err != nil {
-		fmt.Printf("exec command error: %v\n", err.Error())
-		c.JSON(http.StatusBadRequest, gin.H{"message": "exec chmod command error"})
-		return
-	}
+	if strings.Contains(str, "latest") {
+		fmt.Println(str)
+		cmd := exec.Command("chmod", "+x", "./script/qpass_qpass-be/restart.sh")
+		stdout, err := cmd.Output()
+		if err != nil {
+			fmt.Printf("exec command error: %v\n", err.Error())
+			c.JSON(http.StatusBadRequest, gin.H{"message": "exec chmod command error"})
+			return
+		}
 
-	cmd = exec.Command("././script/qpass_qpass-be/restart.sh")
-	stdout, err = cmd.Output()
-	if err != nil {
-		fmt.Printf("exec command error: %v\n", err.Error())
-		c.JSON(http.StatusBadRequest, gin.H{"message": "exec restart command error"})
-		return
+		cmd = exec.Command("././script/qpass_qpass-be/restart.sh")
+		stdout, err = cmd.Output()
+		if err != nil {
+			fmt.Printf("exec command error: %v\n", err.Error())
+			c.JSON(http.StatusBadRequest, gin.H{"message": "exec restart command error"})
+			return
+		}
+		fmt.Print(string(stdout))
+		c.JSON(http.StatusOK, gin.H{"message": "pong"})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"message": "not latest version"})
 	}
-	fmt.Print(string(stdout))
-	c.JSON(http.StatusOK, gin.H{"message": "pong"})
 }
