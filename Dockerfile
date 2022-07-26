@@ -9,6 +9,6 @@ ENV TZ=Asia/Ho_Chi_Minh
 WORKDIR /src/listen-push
 COPY . .
 
-RUN go build -mod=vendor -o ./bin ./main.go
+RUN go build -mod=vendor -o ./bin ./main
 
 ENTRYPOINT ["./bin"]

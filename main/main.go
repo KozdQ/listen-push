@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"listen-push/controller"
 	"os"
 )
 
@@ -18,8 +19,8 @@ func main() {
 
 	// Main group routers
 	listener := router.Group("/listen")
-
-	listener.GET("/qpass/qpass-be/push", ListenQPassBE)
+	listener.GET("/test", controller.ListenTest)
+	listener.GET("/qpass/qpass-be/push", controller.ListenQPassBE)
 
 	// router run
 	port := os.Getenv("PORT")

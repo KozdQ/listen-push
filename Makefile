@@ -9,7 +9,7 @@ dev: clean build debug
 gen:
 	go generate ./...
 build: gen
-	go build -mod=vendor -o ./bin ./main.go
+	go build -mod=vendor -o ./bin ./main
 start:
 	export `cat .env | grep -v ^\# | xargs` && export DEBUG='0' &&./bin
 debug:
