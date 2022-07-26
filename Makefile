@@ -1,4 +1,4 @@
-DOCKER_REGISTRY := coddyOcat
+DOCKER_REGISTRY := coddyocat
 DEPLOY := listen-push
 RELEASE_VERSION := $(shell git describe --tags | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
 
