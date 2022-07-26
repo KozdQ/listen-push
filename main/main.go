@@ -20,8 +20,8 @@ func main() {
 	// Main group routers
 	listener := router.Group("/listen")
 	listener.GET("/test", controller.ListenTest)
-	listener.GET("/qpass/qpass-be/push", controller.ListenQPassBE)
-	listener.POST("/test", controller.ListenTest)
+	listener.POST("/qpass/qpass-be/push", controller.ListenQPassBE)
+	listener.POST("/test", controller.ListenWebhookTest)
 
 	// router run
 	port := os.Getenv("PORT")
