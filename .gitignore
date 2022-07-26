@@ -1,0 +1,5 @@
+.idea
+vendor/*
+!vendor/modules.txt
+.vscode
+bin
