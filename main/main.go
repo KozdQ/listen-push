@@ -21,6 +21,7 @@ func main() {
 	listener := router.Group("/listen")
 	listener.GET("/test", controller.ListenTest)
 	listener.GET("/qpass/qpass-be/push", controller.ListenQPassBE)
+	listener.POST("/test", controller.ListenTest)
 
 	// router run
 	port := os.Getenv("PORT")
