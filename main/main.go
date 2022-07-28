@@ -21,6 +21,7 @@ func main() {
 	listener := router.Group("/listen")
 	listener.GET("/test", controller.ListenTest)
 	listener.POST("/qpass/qpass-be/push", controller.ListenQPassBE)
+	listener.POST("/qpass/qpass-fe/push", controller.ListenQPassFE)
 	listener.POST("/test", controller.ListenWebhookTest)
 
 	// router run
